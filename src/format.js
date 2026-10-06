@@ -10,6 +10,7 @@ import { convert, getCurrency } from './currency.js';
  *
  * @param {number} amount Monto en bolivianos.
  * @param {string} [currency='BOB'] Código de moneda: 'BOB', 'USD' o 'EUR' (sin distinguir mayúsculas).
+ * @param {{width?: number}} [options={}] Opciones de presentación.
  * @returns {string} Precio formateado.
  * @throws {Error} Si la moneda no está soportada.
  *
@@ -18,8 +19,9 @@ import { convert, getCurrency } from './currency.js';
  * formatPrice(25.5)        // 'Bs 25.50'
  * formatPrice(100, 'USD')  // '$ 14.50'
  * formatPrice(100, 'EUR')  // '€ 13.30'
+ * formatPrice(10, 'BOB', { width: 12 }) // '    Bs 10.00'
  */
-export function formatPrice(amount, currency = 'BOB') {
+export function formatPrice(amount, currency = 'BOB', { width = 0 } = {}) {
   const { symbol } = getCurrency(currency);
-  return `${symbol} ${convert(amount, currency).toFixed(2)}`;
+  return `${symbol} ${convert(amount, currency).toFixed(2)}`.padStart(width);
 }
