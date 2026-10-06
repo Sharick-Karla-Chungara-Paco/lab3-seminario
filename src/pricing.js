@@ -10,10 +10,12 @@ import { addTax } from './tax.js';
  *  - Si se proporciona un código válido, se aplica el descuento al subtotal.
  *  - El resultado se redondea a 2 decimales.
  *  - Un carrito vacío vale 0.
+ *  - Si includeTax es true, agrega IVA del 13 % después del descuento.
  *
  * @param {Array<{price: number, quantity: number}>} items Ítems del carrito.
  * @param {Object} [options={}] Opciones del cálculo.
  * @param {string} [options.discountCode] Código de descuento.
+ * @param {boolean} [options.includeTax=false] Agrega IVA después del descuento.
  * @returns {number} Total del carrito.
  *
  * @example
@@ -24,6 +26,8 @@ import { addTax } from './tax.js';
  *   { price: 40, quantity: 1 },
  * ])                                                   // 91
  * calculateTotal([{ price: 100, quantity: 1 }], { discountCode: 'SAVE10' }) // 90
+ * calculateTotal([{ price: 100, quantity: 1 }], { includeTax: true }) // 113
+ * calculateTotal([{ price: 100, quantity: 1 }], { discountCode: 'SAVE10', includeTax: true }) // 101.7
  */
 export function calculateTotal(items, { discountCode, includeTax = false } = {}) {
   const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
