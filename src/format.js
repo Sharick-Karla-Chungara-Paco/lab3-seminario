@@ -7,6 +7,7 @@ import { convert, getCurrency } from './currency.js';
  *  - El monto se recibe en bolivianos y se convierte a la moneda indicada.
  *  - Se muestra el símbolo de la moneda y siempre dos decimales.
  *  - Una moneda no soportada lanza un error.
+ *  - Puede alinear el resultado a la derecha con un ancho mínimo.
  *
  * @param {number} amount Monto en bolivianos.
  * @param {string} [currency='BOB'] Código de moneda: 'BOB', 'USD' o 'EUR' (sin distinguir mayúsculas).
