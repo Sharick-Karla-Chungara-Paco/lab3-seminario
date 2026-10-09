@@ -1,5 +1,11 @@
 #!/usr/bin/env node
-import { products, searchProducts, formatPrice } from './index.js';
+import {
+  products,
+  searchProducts,
+  formatPrice,
+  findProductBySku,
+  buildReceipt,
+} from './index.js';
 
 const commands = {
   list() {
@@ -17,6 +23,22 @@ const commands = {
     for (const product of results) {
       console.log(`${product.sku}  ${product.name}`);
     }
+  },
+
+  receipt(...entries) {
+    const items = entries.map((entry) => {
+      const [sku, quantityText] = entry.split(':');
+      const product = findProductBySku(sku);
+      const quantity = Number(quantityText);
+
+      if (!product || !Number.isInteger(quantity) || quantity <= 0) {
+        throw new Error(`Ítem inválido: ${entry}. Usa SKU:CANTIDAD.`);
+      }
+
+      return { name: product.name, price: product.price, quantity };
+    });
+
+    console.log(buildReceipt(items));
   },
 
   // Los comandos nuevos se registran debajo de esta línea

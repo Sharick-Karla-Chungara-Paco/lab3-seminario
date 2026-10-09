@@ -6,3 +6,4 @@ export * from './format.js';
 export * from './discounts.js';
 export * from './tax.js';
 export * from './currency.js';
+export * from './receipt.js';
