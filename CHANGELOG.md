@@ -8,6 +8,7 @@ y el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 ## [Unreleased]
 
 ### Added
+- Códigos de descuento SAVE10, SAVE20 y BLACKFRIDAY para el total del carrito.
 
 ### Changed
 
