@@ -8,6 +8,7 @@ y el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 ## [Unreleased]
 
 ### Added
+- Soporte de monedas BOB, USD y EUR en `formatPrice` (`src/currency.js`).
 - Impuesto IVA del 13 % opcional en el total del carrito.
 - Códigos de descuento SAVE10, SAVE20 y BLACKFRIDAY para el total del carrito.
 
