@@ -22,5 +22,5 @@ export function findProductBySku(sku) {
  * @returns {Array<{sku: string, name: string, price: number, category: string}>}
  */
 export function searchProducts(term) {
-  return products.filter((product) => product.name.includes(term));
+  return products.filter((product) => product.name.toLowerCase().includes(term.toLowerCase()));
 }
